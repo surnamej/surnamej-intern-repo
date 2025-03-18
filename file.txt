@@ -1,1 +1,1 @@
-Test an overly detailed commit message.
+Test a well-structured commit message.
