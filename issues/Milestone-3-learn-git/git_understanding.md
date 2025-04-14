@@ -118,7 +118,77 @@ Source: [How to Write Better Git Commit Messages – A Step-By-Step Guide](https
     Poor commit messages, like “fixed stuff,” can lead to confusion, increased debugging time, and difficulties in identifying why certain changes were made. This lack of clarity may also negatively impact teamwork, as other developers might misinterpret the purpose or intent behind changes, potentially causing conflicts or redundant work.
 - [x] Commit and push your changes to GitHub.
 ___________________________________________________________
+## Debugging with git bisect
+### Goal
+Learn how to use git bisect to identify which commit introduced a bug in a project.
 
+## Tasks
+- [x] Research git bisect and how it helps in debugging.
+`git bisect` is a binary search tool built into Git that helps find the specific commit where a bug was introduced. It automates the process of checking commits between a known good state and a known bad state.
+
+- [x] Create a test scenario:
+  - Make a series of commits in your test repo.
+  - Introduce a bug in one of the commits.
+  ```bash
+  mkdir bisect-test && cd bisect-test
+  git init
+  echo "Hello World" > app.txt
+  git add .
+  git commit -m "Initial commit: Add app.txt"
+
+  # Add good commits
+  echo "Feature A" >> app.txt
+  git commit -am "Add Feature A"
+
+  echo "Feature B" >> app.txt
+  git commit -am "Add Feature B"
+
+  # Introduce a bug
+  echo "BUGGY CODE" >> app.txt
+  git commit -am "Introduce bug in app.txt"
+
+  # More commits
+  echo "Feature C" >> app.txt
+  git commit -am "Add Feature C"
+  ```
+  - Use git bisect to track down the commit that introduced the issue.
+  ```bash
+  git bisect start
+  git bisect bad  # HEAD is bad (bug present)
+
+  git log --oneline # To investigate commit-hash
+  git bisect good <commit-hash>  # Use hash of commit where bug wasn't present
+
+  # Git will now checkout various commits for testing.
+  # At each step:
+  cat app.txt
+  # If bug is present: `git bisect bad`
+  # If bug not present: `git bisect good`
+
+  # When Git finds the culprit, Git will print:
+  <commit-hash> is the first bad commit
+
+  # After narrowing down:
+  git bisect reset  # Reset back to your original HEAD
+
+  ```
+
+- [x] Experiment using your Git desktop client (or CLI if preferred).
+- [x] Write reflections in git_understanding.md:
+  - What does git bisect do?
+  `git bisect` uses binary search to efficiently find the specific commit that introduced a bug. Instead of checking every commit one by one, it narrows down the range by checking the midpoint each time, cutting the number of steps dramatically.
+
+  - When would you use it in a real-world debugging situation?
+  Use `git bisect` when:
+    - You know the last time your code worked correctly.
+    - A bug appears at some point afterward.
+    - You want to identify the exact commit that introduced the issue.
+
+  - How does it compare to manually reviewing commits?
+    - Manual review is slow and error-prone, especially in large projects.
+    - `git bisect` is fast and automated, often needing just a few checks to pinpoint the problem.
+
+- [x] Commit and push your changes to GitHub.
 ___________________________________________________________
 
 ## Advanced Git Commands & When to Use Them
@@ -157,3 +227,146 @@ Understand and experiment with advanced Git commands using your preferred Git de
 
 - [x] Commit and push your changes to GitHub.
 ___________________________________________________________
+## Merge Conflicts & Conflict Resolution
+### Goal
+Understand what merge conflicts are, why they happen, and how to resolve them.
+
+## Tasks
+- [x] Research what causes merge conflicts in Git.
+Merge conflicts happen when:
+  - Two branches have changes in the same part of a file.
+  - Git cannot automatically determine which change to keep. This typically occurs when two people (or the same person on different branches) make edits to the same lines in the same file.
+
+- [x] Create a merge conflict in your test repo by:
+  - Creating a branch and editing a file.
+  ```bash
+  git checkout -b feature-branch
+  ```
+  Edit a file (e.g., example.txt) and change one of lines to: `This is the feature branch edit.`
+  Add, commit and push the change:
+  ```bash
+  git add example.txt
+  git commit -m "Edit from feature branch"
+  git push origin feature-branch
+  ```
+  - Switching back to main, making a conflicting edit in the same file, and committing it.
+  Switch back to main:
+  ```bash
+  git checkout main
+  ```
+  Edit the same line in example.txt `This is the main branch edit.`, but change it differently, then commit that change:
+  ```bash
+  git add example.txt
+  git commit -m "Edit from main branch"
+  ```
+  - Merging the branch back into main.
+  ```bash
+  git merge feature-branch
+  ```
+  Git will throw a conflict:
+  `CONFLICT (content): Merge conflict in example.txt`
+
+- [x] Use your Git desktop client to resolve the conflict.
+- [x] Write about your experience in git_understanding.md:
+  - What caused the conflict?
+  The conflict was caused by editing the same line in `example.txt` on both `main` and `feature-branch`. Git couldn't automatically decide which version to keep.
+  - How did I resolve it?
+  I used GitHub Desktop to review the changes. I chose to manually combine the edits into one line that made sense, removed the conflict markers, and marked the file as resolved. Then I committed the merge.
+  - What did I learn?
+  I learned how Git handles conflicting changes and how to manually resolve them using a Git desktop client. Merge conflicts seem scary, but they’re just Git’s way of asking for help when it’s unsure what changes to keep.
+
+- [x] Commit and push your changes to GitHub.
+___________________________________________________________
+## Branching & Team Collaboration
+### Goal
+Understand the importance of branching, avoiding direct pushes to main, and following a structured review process.
+
+## Tasks
+- [x] Create a new branch in your Git desktop client (e.g., GitHub Desktop, VS Code, SourceTree).
+```bash
+git checkout -b branch-test
+```
+or if you have a'ready had a branch:
+```bash
+git checkout branch-test
+```
+- [x] Make a small change in your repo and commit it to the new branch.
+I edit a file like team.txt or README.md and add something simple like `This is a collaboration test on a new branch.`, then stage the commit:
+```bash
+git add .
+git commit -m "Add test update for branching practice"
+```
+- [x] Switch back to main and check that your changes are not there.
+```bash
+git checkout main
+```
+Check the file that is changed — the update should not be there. I use `git log --oneline`. I don’t see the commit message I added (like "Add test update for branching practice"), that confirms the commit isn’t in main. This shows how branches isolate changes.
+
+- [x] Reflect on why teams use branches instead of pushing directly to main in git_understanding.md:
+  - Why is pushing directly to main problematic?
+  Pushing directly to main can introduce errors into the production code without peer review. If everyone pushes to main, bugs and breaking changes might be introduced before they’re tested or reviewed, leading to instability.
+
+  - How do branches help with reviewing code?
+  Branches allow developers to isolate work on specific features or fixes. When a branch is ready, a pull request can be created for others to review the code, suggest changes, or approve it. This makes collaboaration safer and more organized.
+
+  - What happens if two people edit the same file on different branches?
+  If two people edit the same file (especially the same lines), Git may not know how to automatically merge them. This results in a merge conflict, and someone will nedd to manually resolve it by choosing which version to keep.
+
+- [x] Commit and push your changes to GitHub.
+___________________________________________________________
+## Git Concepts: Staging vs. Committing
+### Goal
+Understand the difference between staging and committing in Git by experimenting in your own repository.
+
+## Tasks
+- [x] Research the difference between staging and committing.
+  - Staging (`git add`):
+    Prepares specific changes (files or lines) to be committed. Think of it as a "shopping cart" of changes you're ready to save.
+
+  - Committing (`git commit`):
+    Takes all staged changes and permanently records them in the project’s history with a message. It's like checking out your shopping cart and printing a receipt.
+
+- [x] Experiment with adding and committing files in your repo using either:
+  - The terminal (git add / git commit)
+  - A Git desktop client (e.g., GitHub Desktop, VS Code Git integration).
+- [x] Modify a file and try the following:
+  - Stage it but don’t commit (git add <file> or equivalent in your client)
+  ```bash
+  git add stage-learn.txt
+  ```
+  - Check the status (git status).
+  Output said:
+  ```
+  On branch main
+
+  No commits yet
+
+  Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   stage-learn.txt
+  ```
+  - Unstage the file (git reset HEAD <file> or equivalent).
+  Output shown:
+  ```
+  Unstaged changes after reset:
+  M       stage-learn.txt
+  ```
+  - Commit the file and observe the difference.
+
+- [x] Write a summary in git_understanding.md:
+  - What is the difference between staging and committing?
+    - **Staging** is selecting which changes you want to include in your next commit.
+    - **Committing** saves the staged changes to the Git history with a message.
+
+  - Why does Git separate these two steps?
+    Separating staging from committing gives me more control. I can:
+    - Choose which changes to commit.
+    - Group related changes together.
+    - Review everything before making it permanent.
+
+  - When would you want to stage changes without committing?
+    - When I am still working but want to save progress in the index.
+    - When I want to commit only part of my edits (e.g., using `git add -p`).
+    - When collaborating and preparing a clean commit history before pushing.
+
+- [x] Commit and push your changes to GitHub.
