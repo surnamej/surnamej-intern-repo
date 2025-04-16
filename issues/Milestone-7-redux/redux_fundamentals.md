@@ -89,6 +89,7 @@ Now I have used `useSelector` in multiple components both Counter.jsx and Counte
 - [x] Push your Redux setup to GitHub.
 - [x] Reflection (in redux_fundamentals.md):
   - What are the benefits of using selectors instead of directly accessing state?
+    
     I find that using selectors makes my code cleaner and more maintainable. Instead of repeating the same `state.counter.value` logic in multiple components, I can just create a selector once and reuse it anywhere I need that piece of state. This helps reduce duplication and keeps things consistent across my app.
     Selectors also make it easier to update the shape of my state later. If the state structure changes, I only need to update the selector function, not every component that uses it.
     Another benefit is that selectors are easier to test. Since they're just plain functions, I can write unit tests for them without needing to set up a full Redux environment. If I want to optimize performance later, I can also memoize selectors to avoid unnecessary re-renders.
