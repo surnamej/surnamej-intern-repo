@@ -1,0 +1,32 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "files": ["**/*.md"],
+  "dictionaries": ["en-gb", "softwareTerms"],
+  "ignorePaths": ["node_modules"],
+  "words": [
+    "Testim",
+    "Behaviour",
+    "Webflow",
+    "Pomodoro",
+    "Professionals",
+    "Inclusivity",
+    "Gengar",
+    "Reprioritize",
+    "Overcomplicating",
+    "Tiimo",
+    "Routinery",
+    "Racecar",
+    "Olleh",
+    "Dlrow",
+    "Colorizes",
+    "Oneline",
+    "Edsger",
+    "docstrings",
+    "ECONNABORTED",
+    "Flamegraph",
+    "surnamej",
+    "Unprofessionals",
+    "Repetative"
+  ]
+}

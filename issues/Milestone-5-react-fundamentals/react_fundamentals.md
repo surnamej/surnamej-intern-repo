@@ -1,7 +1,9 @@
 # Milestone: React Fundamentals
+
 ## Setting up a React project environment
 
 ## Tasks
+
 - [x] **Set up a React project with Tailwind CSS.**
 Project:[react-tailwind-demo](https://github.com/surnamej/react-tailwind-demo)
 - [x] **Run the project and ensure Tailwind is working.**
@@ -13,7 +15,7 @@ Project:[react-tailwind-demo](https://github.com/surnamej/react-tailwind-demo)
     Setting up this project on Windows was a great learning experience. I built a React app using Vite and integrated Tailwind CSS v4, and I encountered a few challenges along the way.
 
     **Adapting to Tailwind v4 Changes:**  
-    With Tailwind CSS v4, the old initialisation command (`npx tailwindcss init -p`) is no longer required. Instead, I simply added Tailwind’s directives directly into my CSS file. This new approach simplified the setup but also meant I had to update my workflow and understand the zero-config concept.
+    With Tailwind CSS v4, the old initialization command (`npx tailwindcss init -p`) is no longer required. Instead, I simply added Tailwind’s directives directly into my CSS file. This new approach simplified the setup but also meant I had to update my workflow and understand the zero-config concept.
 
     **Using JSX:**  
     I chose to use JSX because it allows me to write HTML-like code directly within JavaScript. This results in more readable and maintainable code when building user interfaces. JSX simplifies component creation by letting me seamlessly integrate UI markup with JavaScript logic. Although files containing JSX are commonly named with a .jsx extension, I’ve kept the assignment requirement to use a .js file when needed.
@@ -25,16 +27,20 @@ Project:[react-tailwind-demo](https://github.com/surnamej/react-tailwind-demo)
     This setup process reinforced the importance of reading the latest documentation and adapting to changes in tools and frameworks. It also highlighted the need to understand the nuances of the operating system you’re working on. Overall, the experience improved my skills in managing modern development environments and gave me more confidence working with React and Tailwind CSS on Windows.
 
     In summary, while there were minor challenges, the project setup was a valuable opportunity to enhance my technical knowledge and problem-solving skills.
+
 ______________________________________
 
 ## Understanding Components & Props
+
 ### Goal
+
 Learn the core building blocks of React.
 
 ## Tasks
 
 - [x] Create a functional component called HelloWorld.js that displays "Hello, Focus Bear!"
 - [x] Pass a prop called name to the component and display it dynamically.
+
 ``` JavaScript XML
 import React from 'react';
 
@@ -48,6 +54,7 @@ function HelloWorld({ name }) {
 
 export default HelloWorld;
 ```
+
 - [x] Push this component to GitHub.
 [Project-demo](https://github.com/surnamej/react-tailwind-vite-demo)
 
@@ -60,10 +67,14 @@ export default HelloWorld;
     - **Encapsulation:** Components manage their own state and behavior, reducing complexity in the overall application.
     - **Clarity:** By splitting the UI into self-contained components, the overall structure of the application becomes clearer and more manageable.
 
-    Overall, components allow for better organisation and scalability of applications, making development more efficient.
+    Overall, components allow for better organization and scalability of applications, making development more efficient.
+
 ______________________________________
+
 ## Handling State & User Input
+
 ### Goal
+
 Learn how to manage state using useState.
 
 ### Tasks
@@ -71,11 +82,12 @@ Learn how to manage state using useState.
 - [x] Create a component Counter.js with a button that increments a number when clicked.
 - [x] Use useState to manage the count value.
 - [x] Display the count value dynamically.
+
 ```Javascript XML (jsx)
 import React, { useState } from 'react';
 
 function Counter() {
-  // Initialise count state with a default value of 0
+  // Initialize count state with a default value of 0
   const [count, setCount] = useState(0);
 
   // Function to handle the increment
@@ -98,6 +110,7 @@ function Counter() {
 
 export default Counter;
 ```
+
 - [x] Push this component to GitHub.
 
 - [x] Reflection (in react_fundamentals.md):
@@ -105,13 +118,16 @@ export default Counter;
   When I modify state directly, I bypass React’s built-in update system. This can cause a few issues:
     - **No UI Update**: React won’t notice the change, so my UI might not refresh.
     - **Unexpected Bugs**: Changing state directly can lead to unpredictable behavior.
-    - **Performance Problems**: I lose React’s optimisations that come from treating state as immutable.
+    - **Performance Problems**: I lose React’s optimizations that come from treating state as immutable.
 
   Always use `setState` (in class components) or the updater function from `useState` (in functional components) to ensure React correctly tracks and updates your UI.
+
 ______________________________________
 
 ## Styling with Tailwind CSS
+
 ### Goal
+
 Learn to style React components using Tailwind CSS.
 
 ## Tasks
@@ -121,6 +137,7 @@ Learn to style React components using Tailwind CSS.
 Now update Counter.js to remove the previous regular CSS and use Tailwind CSS classes. You’ll also import and use the Button component from Button.jsx.
 - [x] Add hover and active states using Tailwind utilities.
 - [x] Push your styled components to GitHub.
+
 ``` JavaScript XML
 // Button.jsx
 import React from 'react';
@@ -138,6 +155,7 @@ const Button = ({ onClick, children, className = '' }) => {
 
 export default Button;
 ```
+
 ``` JavaScript XML
 // Counter.jsx
 import React, {useState} from "react";
@@ -159,6 +177,7 @@ function Counter() {
 
 export default Counter;
 ```
+
 - [x] Reflection:
   - What are the advantages of using Tailwind CSS?
     - **Utility-First Approach:**  
@@ -166,13 +185,13 @@ export default Counter;
     - **Rapid Prototyping:**  
     With pre-built classes, I can quickly prototype and iterate on designs, speeding up development.
     - **Consistent Design:**  
-    Using standardised classes helps maintain a consistent look and feel across my project.
+    Using standardized classes helps maintain a consistent look and feel across my project.
     - **Responsive Design Made Easy:**  
     Tailwind includes responsive utilities that simplify adapting my UI for different screen sizes.
-    - **Customisability:**  
+    - **Customizability:**  
     The configuration file in Tailwind allows me to easily customize themes, colors, spacing, and more to fit my design needs.
-    - **Optimised Production Builds:**  
-    In my onboarding, I've found that ensuring an optimised production CSS bundle is crucial. [PurgeCSS](https://purgecss.com/) (or Tailwind's built-in purge functionality) is to remove unused styles. PostCSS allows me to use JavaScript plugins to transform my CSS.
+    - **Optimized Production Builds:**  
+    In my onboarding, I've found that ensuring an optimized production CSS bundle is crucial. [PurgeCSS](https://purgecss.com/) (or Tailwind's built-in purge functionality) is to remove unused styles. PostCSS allows me to use JavaScript plugins to transform my CSS.
 
   - What are some potential pitfalls?
     - **Learning Curve:**  
@@ -183,23 +202,28 @@ export default Counter;
 
     - **Over-Reliance on Classes:**  
     There is a risk of overusing utility classes, which might lead to repetitive code and less semantic markup if I’m not careful with my approach.
-    
-    - **Customisation Complexity:**  
-    While I enjoy the customisability, managing an extensive custom configuration can sometimes add complexity to my project.
+
+    - **Customization Complexity:**  
+    While I enjoy the customizability, managing an extensive custom configuration can sometimes add complexity to my project.
 
     - **Dependency on Build Tools:**  
     To keep my Tailwind CSS bundle small, tools like PurgeCSS help me to remove unused styles. This extra step can make my project setup more complicated.
+
 ______________________________________
 
 ## Working with Lists & User Input
+
 ### Goal
+
 Learn to handle lists dynamically in React.
 
 ## Tasks
+
 - [x] Create a simple form with an input field and a button.
 - [x] When the user enters text and clicks the button, add the text to a list.
 - [x] Display the list dynamically using .map().
 - [x] Push your form component to GitHub.
+
 ```JSX
 import React, {useState} from "react";
 
@@ -274,7 +298,9 @@ export default ListForm;
       setItems(items);     // May not trigger a re-render
     };
     ```
+
     Solution
+
     ```JSX
     // Correct: Updating state immutably
     const addItemCorrectly = (newItem, items, setItems) => {
@@ -283,18 +309,24 @@ export default ListForm;
     ```
 
     - **Performance Concerns:**  
-    For larger lists, I need to be mindful of performance. Inefficient re-rendering can occur if I don't optimize how the list updates. In some cases, implementing lazy loading or virtualisation becomes necessary.
+    For larger lists, I need to be mindful of performance. Inefficient re-rendering can occur if I don't optimize how the list updates. In some cases, implementing lazy loading or virtualization becomes necessary.
+
 _______________________________________
 
 ## Navigation with React Router
+
 ### Goal
+
 Learn how to navigate between pages in React using React Router.
 
 ## Tasks
+
 - [x] Install React Router and set up a basic routing system.
+
 ```bash
 npm install react-router-dom
 ```
+
 - [x] Create two pages: Home.js and Profile.js.
 - [x] Add navigation between the two pages (e.g., using Link or useNavigate).
 - [x] Push your navigation setup to GitHub.

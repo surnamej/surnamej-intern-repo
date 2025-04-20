@@ -1,14 +1,18 @@
 # Milestone: React Fundamentals
 
 ## Handling Forms with Formik
+
 ### Goal
+
 Learn how to build and manage forms efficiently using Formik.
 
 ## Tasks
+
 - [x] Research what Formik is and why it's useful for handling forms in React.
 Formik is a popular open-source library for handling forms in React and React Native. It simplifies form state management, validation, and submission, making it easier to build complex forms with less code.
 
 **Why is Formik Useful?**
+
 - Formik manages form state, including values, errors, and touched fields, reducing the need for boilerplate code1.
 - It integrates seamlessly with validation libraries like Yup, allowing for robust and scalable form validation.
 - Formik handles form submission, including preventing default behavior and managing form state during submission1.

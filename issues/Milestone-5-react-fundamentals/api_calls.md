@@ -1,16 +1,22 @@
 # Milestone: React Fundamentals
+
 ## Making API Calls with Axios
+
 ### Goal
+
 Learn how to set up and manage API requests using Axios in a React project.
 
 ### Why is this important?
+
 Focus Bear relies on API calls for authentication, payments, and data retrieval. Understanding how to use Axios properly ensures that API requests are efficient, secure, and well-structured.
 
 ## Tasks
+
 - [x] Research how Axios works and why it's commonly used for API calls.
 Axios is a popular JavaScript library used to make HTTP requests from the browser or Node.js. It simplifies the process of making requests and handling responses, providing a clean and intuitive API. Axios supports promises, making it easy to handle asynchronous operations using async/await syntax.
 
 Why use Axios?:
+
 - Axios provides a simple API for making HTTP requests, which is more concise and easier to use compared to the Fetch API.
 - Axios allows you to intercept requests and responses, enabling you to modify or handle them globally.
 - Axios has built-in error handling, making it easier to manage errors compared to the Fetch API2.
@@ -40,4 +46,3 @@ Why use Axios?:
 
   - What happens if an API request times out, and how can you handle it?
   If an API request exceeds the specified timeout (e.g., 10 seconds), Axios will throw a timeout error (often indicated by the code `ECONNABORTED`). Handling such timeouts is crucial to avoid leaving the application waiting indefinitely. In my setup, I catch the timeout error to log it and can further implement user notifications, retry logic, or fallback mechanisms to ensure a smooth user experience.
-

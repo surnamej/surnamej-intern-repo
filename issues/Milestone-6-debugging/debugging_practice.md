@@ -1,15 +1,22 @@
 # Milestone: Debugging
 
-## Practise React Debugging in a Test Repo
+## Practice React Debugging in a Test Repo
+
 ### Goal
+
 Apply debugging techniques to a real React codebase and learn through hands-on practice.
 
 ## Tasks
+
 - [x] Read the article ["Three Buggy React Code Examples And How To Fix Them"](https://css-tricks.com/three-buggy-react-code-examples-and-how-to-fix-them/).
 - [x] Recreate at least one of the buggy examples in your own React project. (in Buggy.jsx)
+
 -----------------------------------------------------------
+
 #### Buggy: Stale State in useEffect
+
 Scenario: There’s a "Save" button that should auto-save a message after a delay. But after updating the message, it still saves the old one.
+
 ```jsx
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -48,13 +55,16 @@ export default AutoSaveMessage;
 
 **Debugging Method**:
 I likely used a combo of:
+
 - UI observation — noticing that “Saved message” never updates.
 - `console.log` in the effect or setSavedMessage to see what's actually being passed in.
+
   ```js
   console.log("Current message in effect:", message);
   ```
 
 **Bug Summary**:
+
 ```jsx
 useEffect(() => {
   const timeout = setTimeout(() => {
@@ -63,12 +73,15 @@ useEffect(() => {
   return () => clearTimeout(timeout);
 }, []);
 ```
+
 I am using  an empty dependency array ([]) in useEffect, which means:
- - This effect runs only once on mount.
- - It captures the initial value of message, which is an empty string ("").
- - So the timeout always sets savedMessage to "", no matter what the user types afterward.
+
+- This effect runs only once on mount.
+- It captures the initial value of message, which is an empty string ("").
+- So the timeout always sets savedMessage to "", no matter what the user types afterward.
 
 To fix it, I updated the effect like this:
+
 ```jsx
 useEffect(() => {
   const timeout = setTimeout(() => {
@@ -78,7 +91,9 @@ useEffect(() => {
   return () => clearTimeout(timeout);
 }, [message]);
 ```
+
 Adding message to the dependency array ensures that every time message changes:
+
 - The effect re-runs.
 - A new timeout is created with the latest value of message.
 - `setSavedMessage(message)` reflects the correct message after 2 seconds.

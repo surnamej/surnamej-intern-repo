@@ -1,14 +1,16 @@
 # Milestone: Debugging
 
 ## When to Use Google, AI Tools, or Ask for Help?
+
 ### Goal
+
 Develop a strategy to determine when to use search engines, AI tools, or seek help from colleagues during problem-solving.
 
 ## Tasks
+
 - [x] Research best practices for troubleshooting coding problems.
   - Spend 30 minutes talking with Chat GPT to understand different perspectives on using AI in coding. When is it helpful and when is it not?
   
-
 - [x] Develop a decision-making framework:
   - Create a flowchart or decision tree in Miro outlining scenarios where each resource (Google, AI tools, colleagues) would be most appropriate.
   - Consider factors such as:
@@ -17,6 +19,7 @@ Develop a strategy to determine when to use search engines, AI tools, or seek he
     - The urgency of the task.
 
 ![image](Tree%20Diagram.jpg)
+
 - [x] Export the flowchart and add it to your GitHub repo.
 
 - [x] Write a reflection in help_strategy.md:
@@ -28,7 +31,7 @@ Develop a strategy to determine when to use search engines, AI tools, or seek he
     - I’ve already spent time trying to solve it myself and need a fresh perspective.
     - The issue is blocking others or impacts collaborative work.
     - I need guidance on code standards, trade-offs, or review.
-    
+
     Asking for help is not a last resort—it’s a way to collaborate efficiently and avoid wasting time alone.
 
   - What challenges do developers face when troubleshooting alone?

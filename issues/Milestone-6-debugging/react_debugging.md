@@ -1,10 +1,13 @@
 # Milestone: Debugging
 
 ## Research Best Debugging Techniques for React
+
 ### Goal
+
 Understand and apply effective debugging techniques in React development.
 
 ## Tasks
+
 - [x] Research best debugging techniques for React applications.
   - Explore tools like React DevTools, browser console, and VS Code debugger.
     1. Console Logging
@@ -14,18 +17,18 @@ Understand and apply effective debugging techniques in React development.
 
     2. [React Developer Tools](https://react.dev/learn/react-developer-tools)
       React DevTools is a browser extension for Chrome and Firefox that lets you:
-      - Inspect React component trees.
-      - View props and state in real-time.
-      - Highlight re-rendered components.
+    - Inspect React component trees.
+    - View props and state in real-time.
+    - Highlight re-rendered components.
     3. [VS Code Debugger](https://code.visualstudio.com/docs/debugtest/debugging)
       VS Code provides a built-in debugger that can be configured to:
-      - Set breakpoints in React code (even JSX).
-      - Step through code execution.
-      - Inspect local variables and call stacks.
+    - Set breakpoints in React code (even JSX).
+    - Step through code execution.
+    - Inspect local variables and call stacks.
   
   - Learn about error boundaries and how to handle runtime errors.
     Error boundaries are React components that catch JavaScript errors anywhere in their child component tree, log those errors, and display a fallback UI instead of crashing the whole app.
-    
+
     They work for:
     - Render phase errors
     - Lifecycle methods
@@ -53,7 +56,7 @@ Understand and apply effective debugging techniques in React development.
     - Visualization Modes – Flamegraph and Ranked View:
       - Flamegraph: Offers a visual representation of the component tree, with colors indicating relative render times. Useful for identifying slow components in context.
       - Ranked View: Lists components in order of render cost, allowing developers to quickly pinpoint the most performance-intensive components.
-    
+
     These features collectively enable a detailed examination of rendering behavior, empowering developers to make data-driven decisions when optimizing React applications.
 
 - [x] Summarize key debugging strategies in react_debugging.md.
@@ -65,6 +68,7 @@ Understand and apply effective debugging techniques in React development.
     5. Testing (Jest + React Testing Library): Prevent regressions and validate component behavior through unit/integration tests.
 
   - Which tools are most effective for React debugging?
+
     | Tool               | Use Case                                                             |
     |--------------------|----------------------------------------------------------------------|
     | **React DevTools** | Inspect props/state, detect re-renders, analyze performance          |

@@ -1,10 +1,13 @@
 # Milestone: Clean code
 
 ## Understanding Clean Code Principles
+
 ### Goal
+
 Understand the core principles of clean code and why they matter in real-world development.
 
 ## Tasks
+
 - [x] Research and summarize the following clean code principles in clean_code.md:
   - Simplicity – Keep code as simple as possible.
   - Readability – Code should be easy to understand.
@@ -17,7 +20,7 @@ Understand the core principles of clean code and why they matter in real-world d
 
   1. **Simplicity**
     Code should be as simple as possible—no more, no less. It should do what it needs to do and nothing more.
-    
+
     Simple code is easier to test, debug, and refactor.
 
     *"The art of programming is the art of organizing complexity, of mastering multitude and avoiding its bastard chaos as effectively as possible."*
@@ -27,7 +30,7 @@ Understand the core principles of clean code and why they matter in real-world d
 
   2. **Readability**
     Code should be written for humans first, and machines second.
-    
+
     Readable code reduces onboarding time and makes collaboration smoother.
 
     *"Code is read much more often than it is written."*
@@ -37,7 +40,7 @@ Understand the core principles of clean code and why they matter in real-world d
 
   3. **Maintainability**
     Code should be easy to change, extend, or refactor without breaking existing functionality.
-    
+
     Most of the cost in software comes after the initial development. Maintainable code keeps long-term costs low.
 
     *"Clean code always looks like it was written by someone who cares."*
@@ -47,7 +50,7 @@ Understand the core principles of clean code and why they matter in real-world d
 
   4. **COnsistency**
     Code should follow a uniform style across the entire project.
-    
+
     Consistency allows developers to predict how code is structured, which speeds up understanding.
 
     *"A foolish consistency is the hobgoblin of little minds…"*
@@ -57,7 +60,7 @@ Understand the core principles of clean code and why they matter in real-world d
 
   5. **Efficiency**
     Code should be performant and make good use of resources, but not at the cost of readability.
-    
+
     Efficient code scales better and can reduce infrastructure costs.
 
     *"Premature optimization is the root of all evil."*
@@ -70,19 +73,23 @@ Understand the core principles of clean code and why they matter in real-world d
   - [PEP 8 – Python Enhancement Proposal](https://peps.python.org/pep-0008/)
 
 - [x] Find an example of messy code online (or write one yourself) and describe why it's difficult to read.
+
 ```js
 function f(n){if(n==0){return 1;}else{return n*f(n-1);}}
 
 // Example usage:
 console.log(f(5)); // Should print 120
 ```
+
 Issues:
+
 - Lack of Descriptive Naming: The function name f doesn't convey its purpose.
 - Poor Formatting: The entire function is written on a single line, making it hard to read.
 - Inconsistent Spacing: There's no space around operators and after commas, which hampers readability.
 - No Input Validation: The function doesn't handle negative inputs or non-integer values.
 
 - [x] Rewrite the code in a cleaner, more structured way.
+
 ```js
 /**
  * Calculates the factorial of a non-negative integer.
@@ -105,20 +112,26 @@ function calculateFactorial(number) {
 // Example usage:
 console.log(calculateFactorial(5)); // Output: 120
 ```
+
 Improvements:
+
 - Descriptive Naming: Renamed the function to calculateFactorial to clearly indicate its purpose.
 - Proper Formatting: Structured the code with appropriate indentation and spacing for better readability.
 - Input Validation: Added checks to ensure the input is a non-negative integer, throwing an error otherwise.
 - Documentation: Included a JSDoc comment to explain the function's purpose, parameters, return value, and potential errors.
 
 - [x] Commit and push your changes to GitHub.
+
 ___________________________________________________________
 
 ## Code Formatting & Style Guides
+
 ### Goal
+
 Understand the importance of code formatting and how to use tools like linters to enforce consistency.
 
 ## Tasks
+
 - [x] Research the importance of consistent code style.
 Consistent code style improves collaboration, readability, and maintainability. When everyone follows the same conventions, developers can:
   - Quickly understand each other's code
@@ -143,9 +156,11 @@ The Airbnb JavaScript Style Guide is one of the most widely adopted JavaScript s
   Step 1: Initialize the project with `npm init -y`
 
   STep 2: Install both tools and their recommended configs:
+
   ```bash
   npm install --save-dev eslint prettier eslint-config-prettier eslint-plugin-prettier
   ```
+
   `eslint`: Finds and reports on problems in your code.
 
   `prettier`: Formats your code.
@@ -155,10 +170,13 @@ The Airbnb JavaScript Style Guide is one of the most widely adopted JavaScript s
   `eslint-plugin-prettier`: Runs Prettier as an ESLint rule.
 
   Step 3: Run the ESLint initialization wizard to configure ESLint:
+
   ```bash
   npx eslint --init
   ```
+
   The system will prompt some questions like:
+
   ```bash
   √ What do you want to lint? · javascript
   √ How would you like to use ESLint? · problems
@@ -173,9 +191,11 @@ The Airbnb JavaScript Style Guide is one of the most widely adopted JavaScript s
   √ Which package manager do you want to use? · npm
   ☕️Installing...
   ```
+
   This creates a .eslintrc config file.
   
   If not, create a .eslintrc.json file manually:
+
   ```json
   {
     "extends": ["prettier"],
@@ -187,6 +207,7 @@ The Airbnb JavaScript Style Guide is one of the most widely adopted JavaScript s
   ```
 
   Step 4: Add a Prettier Config by creating a .prettierrc file
+
   ```json
   {
     "semi": true,
@@ -198,6 +219,7 @@ The Airbnb JavaScript Style Guide is one of the most widely adopted JavaScript s
   ```
 
   Step 5: Add Scripts to package.json
+
   ```json
   "scripts": {
     "lint": "eslint .",
@@ -212,13 +234,16 @@ The Airbnb JavaScript Style Guide is one of the most widely adopted JavaScript s
   
   After running the following command, I investigated that some code files have changed their structure.
   From:
+
   ```js
   function f(n){if(n==0){return 1;}else{return n*f(n-1);}}
 
   // Example usage:
   console.log(f(5)); // Should print 120
   ```
+
   To:
+
   ```js
   function f(n) {
   if (n == 0) {
@@ -231,7 +256,6 @@ The Airbnb JavaScript Style Guide is one of the most widely adopted JavaScript s
   // Example usage:
   console.log(f(5)); // Should print 120
   ```
-
 
 - [x] Write reflections in clean_code.md:
   - Why is code formatting important?
@@ -260,13 +284,17 @@ The Airbnb JavaScript Style Guide is one of the most widely adopted JavaScript s
     It’s easier to scan visually, especially when switching between files or returning to the project after a break. The formatter also helped ensure that all team members would produce code that "looks the same."
 
 - [x] Commit and push your changes to GitHub.
+
 ___________________________________________________________
 
 ## Naming Variables & Functions
+
 ### Goal
+
 Learn how to choose clear and meaningful names for variables and functions.
 
 ## Tasks
+
 - [x] Research best practices for naming variables and functions.
   - Use descriptive, specific names that communicate purpose (e.g., userAge instead of x)
   - Prefer nouns for variables, verbs for functions (e.g., calculateTotal(), fetchUserData())
@@ -280,6 +308,7 @@ Learn how to choose clear and meaningful names for variables and functions.
 
 - [x] Find examples of unclear variable names in an existing codebase (or write your own).
   Before Refactoring – Unclear Code Example
+
   ```js
   function c(d) {
     let t = 0;
@@ -292,12 +321,14 @@ Learn how to choose clear and meaningful names for variables and functions.
   let a = [1, 2, 3, 4];
   console.log(c(a));
   ```
+
   Problems:
   - `c` is not meaningful as a function name.
   - `d`, `t`, `a`, and `i` are too vague.
   - No indication of what the function actually does
 
 - [x] Refactor the code by renaming variables/functions for better clarity.
+
   ```js
   function calculateSum(numbers) {
     let total = 0;
@@ -310,6 +341,7 @@ Learn how to choose clear and meaningful names for variables and functions.
   let values = [1, 2, 3, 4];
   console.log(calculateSum(values)); // Output: 10
   ```
+
   Improvements:
   - `calculateSum` clearly describes the function's purpose.
   - `numbers`, `total`, `index`, and `values` are meaningful and self-explanatory.
@@ -329,13 +361,17 @@ Learn how to choose clear and meaningful names for variables and functions.
     Renaming variables and functions made the logic self-documenting. I no longer need to read line-by-line to understand what the function does — the names tell the story. This helps both in solo work and in team collaboration, especially on large codebases.
 
 - [x] Commit and push your changes to GitHub.
+
 ___________________________________________________________
 
 ## Avoiding Code Duplication
-###  Goal
+
+### Goal
+
 Understand how to identify and eliminate unnecessary duplication in code.
 
 ## Tasks
+
 - [x] Research the "Don't Repeat Yourself" (DRY) principle.
   The **DRY** principle encourages developers to eliminate redundancy by *abstracting repeated logic* into reusable components (functions, classes, modules, etc.).
 
@@ -389,13 +425,17 @@ Understand how to identify and eliminate unnecessary duplication in code.
     - The code became easier to test, read, and extend — a clear win for long-term scalability.
 
 - [x] Commit and push your changes to GitHub.
+
 ___________________________________________________________
 
 ## Writing Small, Focused Functions
+
 ### Goal
+
 Learn how to break down large functions into smaller, more maintainable units.
 
 ## Tasks
+
 - [x] Research best practices for writing small, single-purpose functions.
   - A function should do one thing and do it well.
   - Prefer descriptive names over comments.
@@ -407,6 +447,7 @@ Learn how to break down large functions into smaller, more maintainable units.
   — Robert C. Martin, Clean Code
 
 - [x] Find an example of a long, complex function in an existing codebase (or write your own).
+
   ```js
   function processOrder(order) {
     let total = 0;
@@ -437,6 +478,7 @@ Learn how to break down large functions into smaller, more maintainable units.
   ```
 
 - [x] Refactor it into multiple smaller functions with clear responsibilities.
+
   ```js
   function calculateItemTotal(item) {
     return item.price * item.quantity;
@@ -485,31 +527,38 @@ Learn how to break down large functions into smaller, more maintainable units.
     - Easier to maintain: if coupon logic changes, it only update `applyCoupon()`.
 
 - [x] Commit and push your changes to GitHub.
+
 ___________________________________________________________
 
 ## Refactoring Code for Simplicity
+
 ### Goal
+
 Learn how to simplify complex or overly engineered code without losing functionality.
 
 ## Tasks
+
 - [x] Research common refactoring techniques.
   - Extract functions to break down complex logic.
   - Replace conditionals with polymorphism (in OOP scenarios).
   - Use guard clauses to reduce nesting.
-    
+
     **Guard clauses** allow early exits from a function when input is invalid or doesn’t meet requirements. This avoids unnecessary nesting and makes code easier to read.
+
     ```js
     function getUserName(user) {
       if (!user) return 'Guest';
       return user.name;
     }
     ```
+
   - Inline temporary variables when not needed.
   - Eliminate redundant code paths.
   - Replace loops with array methods like map, filter, reduce.
   - Apply meaningful naming to improve self-documentation.
 
 - [x] Find an example of overly complicated code in an existing project (or write your own).
+
   ```js
   function checkIfUserCanAccessPage(user, page) {
     if (user && user.role) {
@@ -527,18 +576,21 @@ Learn how to simplify complex or overly engineered code without losing functiona
     }
   }
   ```
+
   Problems:
   - Deep nesting makes the code hard to follow.
   - Repetitive else branches for every condition.
   - Overly verbose logic for a simple permission check.
 
 - [x] Refactor it to make it simpler and more readable.
+
   ```js
   function checkIfUserCanAccessPage(user, page) {
     if (!user?.role || !page?.requiredRole) return false;
     return user.role === page.requiredRole;
   }
   ```
+
   Improvements:
   - Uses guard clauses to exit early.
   - Reduces lines of code without losing clarity.
@@ -557,10 +609,13 @@ Learn how to simplify complex or overly engineered code without losing functiona
     - Cleaner syntax using modern JavaScript features like optional chaining.
 
 - [x] Commit and push your changes to GitHub.
+
 ___________________________________________________________
 
 ## Handling Errors & Edge Cases
+
 ### Goal
+
 Learn how to write robust code that gracefully handles errors and unexpected inputs.
 
 ## Tasks
@@ -574,17 +629,20 @@ Learn how to write robust code that gracefully handles errors and unexpected inp
   - Return consistent error responses (especially in APIs).
 
 - [x] Find an existing function that doesn’t properly handle errors or invalid inputs.
+
   ```js
   function divide(a, b) {
     return a / b;
   }
   ```
+
   Issues:
   - No check for division by zero
   - No type validation (e.g., divide('5', null) would return NaN)
   - No user feedback for invalid input
 
 - [x] Refactor the function to improve error handling.
+
   ```js
   function divide(a, b) {
     if (typeof a !== 'number' || typeof b !== 'number') {
@@ -598,7 +656,9 @@ Learn how to write robust code that gracefully handles errors and unexpected inp
     return a / b;
   }
   ```
+
   Or wrapped in a safe caller with `try/catch`:
+
   ```js
   try {
     console.log(divide(10, 0));
@@ -618,13 +678,17 @@ Learn how to write robust code that gracefully handles errors and unexpected inp
     - Increases user trust by clearly communicating when something goes wrong.
 
 - [x] Commit and push your changes to GitHub.
+
 ___________________________________________________________
 
 ## Commenting & Documentation
+
 ### Goal
+
 Learn when and how to write helpful comments and documentation.
 
 ## Tasks
+
 - [x] Research best practices for writing comments and documentation.
   - Write comments only when necessary -> they should explain “why,” not “what”.
   - Use doc comments (e.g., JSDoc, Python docstrings) to describe function purpose, parameters, and return values
@@ -633,12 +697,14 @@ Learn when and how to write helpful comments and documentation.
   - Don’t restate what the code already makes obvious
 
 - [x] Find an example of poorly commented code and rewrite the comments to be more useful.
+
   ```js
   // add
   function a(x, y) {
     return x + y; // returns the sum
   }
   ```
+
   Issues:
   - Function name and comment are too vague.
   - Comment adds no value (just repeats the code).
@@ -671,13 +737,17 @@ Learn when and how to write helpful comments and documentation.
     - When comments are just repeating the code.
 
 - [x] Commit and push your changes to GitHub.
+
 ___________________________________________________________
 
 ## Writing Unit Tests for Clean Code
+
 ### Goal
+
 Learn how writing unit tests helps maintain clean and reliable code.
 
 ## Tasks
+
 - [x] Research the importance of unit testing in software development.
   **Unit testing** involves testing individual functions or components in isolation to ensure they behave as expected. It's a foundational part of Test-Driven Development (TDD) and continuous integration pipelines.
 
@@ -692,6 +762,7 @@ Learn how writing unit tests helps maintain clean and reliable code.
 
 - [x] Write a few unit tests for a function in your test repo.
   Function to Test (utils.js):
+
   ```js
   function isEven(number) {
     if (typeof number !== 'number') {
@@ -702,7 +773,9 @@ Learn how writing unit tests helps maintain clean and reliable code.
 
   module.exports = isEven;
   ```
+
   Test File (utils.test.js):
+
   ```js
   const isEven = require('./utils');
 
@@ -735,13 +808,17 @@ Learn how writing unit tests helps maintain clean and reliable code.
     - It also helped define clearer boundaries for what the function should and shouldn’t do.
 
 - [x] Commit and push your changes to GitHub.
+
 ___________________________________________________________
 
 ## Identifying & Fixing Code Smells
+
 ### Goal
+
 Learn how to recognize common code smells and refactor them for better readability, maintainability, and performance.
 
 ## Tasks
+
 - [x] Research common code smells and how they impact code quality.
   Code smells are patterns in code that signal deeper issues. They aren’t bugs, but they make code harder to understand, maintain, or extend. Recognizing and fixing them leads to cleaner, more reliable software.
 
@@ -751,11 +828,14 @@ Learn how to recognize common code smells and refactor them for better readabili
 - [x] Refactor the code to eliminate these code smells.
   - Magic Numbers & Strings – Using hardcoded values instead of constants.
     Before:
+
     ```js
     let price = 120;
     let tax = price * 0.07;
     ```
+
     After improving clarity and allows easy changes in one place.
+
     ```js
     const TAX_RATE = 0.07;
     let tax = price * TAX_RATE;
@@ -763,6 +843,7 @@ Learn how to recognize common code smells and refactor them for better readabili
 
   - Long Functions – Functions that do too much and should be broken into smaller parts.
     Before:
+
     ```js
     function processOrder(order) {
       // calculate total
@@ -771,7 +852,9 @@ Learn how to recognize common code smells and refactor them for better readabili
       // send confirmation email
     }
     ```
+
     After separate into each subtask, which is clearer and independently testable.
+
     ```js
     function processOrder(order) {
       const total = calculateTotal(order);
@@ -783,11 +866,14 @@ Learn how to recognize common code smells and refactor them for better readabili
 
   - Duplicate Code – Copy-pasting logic instead of reusing functions.
     Before:
+
     ```js
     if (user.role === 'admin') { showAdminPanel(); }
     if (user.role === 'admin') { logAccess(); }
     ```
+
     After following DRY principle.
+
     ```js
     if (user.role === 'admin') {
       showAdminPanel();
@@ -797,6 +883,7 @@ Learn how to recognize common code smells and refactor them for better readabili
 
   - Large Classes (God Objects) – Classes that handle too many responsibilities.
     Before:
+
     ```js
     class UserManager {
       // authentication
@@ -805,7 +892,9 @@ Learn how to recognize common code smells and refactor them for better readabili
       // email notifications
     }
     ```
+
     After breaking single responsibility into manageable modules.
+
     ```js
     class AuthService {}
     class ProfileService {}
@@ -815,6 +904,7 @@ Learn how to recognize common code smells and refactor them for better readabili
 
   - Deeply Nested Conditionals – Complex if/else trees that make code harder to follow.
     Before:
+
     ```js
     if (user) {
       if (user.loggedIn) {
@@ -824,7 +914,9 @@ Learn how to recognize common code smells and refactor them for better readabili
       }
     }
     ```
+
     After improving readability using guard clauses.
+
     ```js
     if (!user || !user.loggedIn || !user.hasPermission) return;
     // do task
@@ -832,23 +924,29 @@ Learn how to recognize common code smells and refactor them for better readabili
 
   - Commented-Out Code – Unused code that clutters the codebase.
     Before:
+
     ```js
     // function oldLogin() {
     //   return false;
     // }
     ```
+
     After removing unused code.
+
     ```js
     // Removed oldLogin: replaced by new secureAuth method.
     ```
 
   - Inconsistent Naming – Variable names that don't clearly describe their purpose.
     Before:
+
     ```js
     let x = 5;
     let tmp = x * 2;
     ```
+
     After adding meaningful names help future readers understand logic without guessing.
+
     ```js
     let itemCount = 5;
     let totalCost = itemCount * 2;
@@ -874,13 +972,17 @@ Learn how to recognize common code smells and refactor them for better readabili
     - Clear names and modular code reduce time needed to understand unfamiliar code.
 
 - [x] Commit and push your changes to GitHub.
+
 ___________________________________________________________
 
 ## Static Analysis Checks in CI/CD
+
 ### Goal
+
 Understand the purpose of Continuous Integration (CI) and Continuous Deployment (CD) and learn how to enforce Markdown linting and spell checks automatically in a project.
 
 ## Tasks
+
 - [x] Research what CI/CD is and why it’s used in software development.
   **Continuous Integration (CI)** is the practice of automatically testing and validating code every time a change is pushed to the repository.
 
@@ -895,10 +997,121 @@ Understand the purpose of Continuous Integration (CI) and Continuous Deployment 
   - Saves time with automated workflows
 
 - [x] Set up a CI workflow that runs Markdown linting and spell checks on PRs in your repo.
+  1. Initialize the project using:
+
+    ```bash
+    npm init -y
+    ```
+
+  2. Install tools locally
+
+    ```bash
+    npm install --save-dev markdownlint-cli2 cspell
+    ```
+
+  3. Add npm scripts to `package.json`
+
+    ```json
+    "scripts": {
+      "lint:md": "markdownlint-cli2 '**/*.md' '#node_modules'",
+      "lint:md:fix": "markdownlint-cli2-fix '**/*.md' '#node_modules'",
+      "spellcheck": "cspell '**/*' --config cspell.json"
+    }
+    ```
+
+  4. Create a config file for spell checking `cspell.json`
+
+    ```json
+    {
+      "version": "0.2",
+      "language": "en",
+      "files": ["**/*.md"],
+      "ignorePaths": ["node_modules"],
+      "words": ["markdownlint", "cspell", "Husky", "CI", "PR"]
+    }
+    ```
+  
+  5. Created a custom `.markdownlint.jsonc` configuration to:
+  - Allow long lines (up to 800 characters)
+  - Disable or relax strict rules (like MD024 for duplicate headings and MD029 for ordered list prefixes)
+  
+    ```json
+    {
+      "default": true,
+
+      // Allow long lines
+      "MD013": {
+        "line_length": 800,
+        "ignore_code_blocks": true,
+        "tables": false
+      },
+
+      // Disable MD029 (ordered list prefix)
+      "MD029": false,
+
+      // Disable MD024 (duplicate headings)
+      "MD024": false,
+
+      // Other rules you already disabled
+      "MD033": false,
+      "MD036": false,
+      "MD040": false,
+      "MD001": false,
+      "MD035": false
+    }
+    ```
 
 - [x] Experiment with Git Hooks (e.g., Husky) to enforce linting before commits.
+  Install Husky to manage Git hooks:
+
+  ```bash
+  npx husky install
+  npm husky init
+  ```
+
+  After initialize Husky, then edit `.husky/pre-commit` that automatically:
+  - Runs `markdownlint-cli2` to check Markdown formatting.
+  - Runs `cspell` to detect spelling issues in Markdown files.
+
+  ```sh
+  #!/usr/bin/env sh
+  . "$(dirname -- "$0")/_/husky.sh"
+
+  # Lint and auto-fix Markdown files
+  npx markdownlint-cli2 "**/*.md" "#node_modules"
+
+  # Spellcheck
+  npx cspell "**/*.md"
+  ```
+
+  Now every time I try to commit, it will run both linters.
 
 - [x] Open a test PR in your repository and review the automated checks.
+  Create the file `.github/workflows/markdown-checks.yml`, then paste the following content inside:
+
+  ```yaml
+  name: Lint Markdown and Spellcheck
+
+  on:
+    pull_request:
+      branches: [main]
+
+  jobs:
+    lint:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v3
+
+        - name: Install markdownlint and cspell
+          run: |
+            npm install -g markdownlint-cli cspell
+
+        - name: Run markdownlint
+          run: markdownlint "**/*.md"
+
+        - name: Run spell check
+          run: cspell --config cspell.json
+  ```
 
 - [x] Push your CI/CD configuration to your repo.
 
@@ -925,5 +1138,3 @@ Understand the purpose of Continuous Integration (CI) and Continuous Deployment 
 | Speed           | Fast, simple pipelines                  | May need caching, parallelism, and scaling           |
 | Scope           | Linting, basic tests                    | Includes tests, deployments, security scans          |
 | Flexibility     | High – you can experiment easily        | Lower – changes require consensus and testing        |
-
-

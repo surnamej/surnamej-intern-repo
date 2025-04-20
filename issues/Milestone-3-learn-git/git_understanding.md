@@ -1,9 +1,13 @@
 # Milestone: Learn Git
+
 ## Creating & Reviewing Pull Requests
+
 ### Goal
+
 Learn how to create, review, and collaborate on Pull Requests (PRs) in GitHub.
 
 ## Tasks
+
 - [x] Research what a Pull Request (PR) is and why it’s used.
   A Pull Request (PR) is a method by which developers can propose changes to a code repository. When you create a PR, you request the repository’s maintainers to review and merge your changes into a target branch (often the main or master branch). PRs serve multiple purposes:
   - They facilitate discussion among team members about code quality, best practices, and potential improvements.
@@ -17,23 +21,29 @@ Learn how to create, review, and collaborate on Pull Requests (PRs) in GitHub.
   1. Open the terminal.
   2. Navigate to repository. `cd path/to/repo`
   3. From the current repository, create a new branch (for example, name it feature/small-change). *Tip*: Naming branches clearly (with a prefix like “feature/”, “bugfix/”, etc.) helps others understand the purpose.
+
   ```bash
   git checkout -b feature/update-readme
   ```
+
 - [x] Make a small change and push the branch to GitHub.
 - [x] Open a Pull Request on GitHub:
   - Add a meaningful PR title and description.
   - Link to a related issue (if applicable).
+
   ```bash
     git add README.md
     git commit
   ```
-  Commit -> ( chore: Test pull request workflow 
+
+  Commit -> ( chore: Test pull request workflow
               Added a small change to verify the pull request process is working correctly.)
   - Push the branch to GitHub.
+
   ```bash
     git push origin feature/update-readme
   ```
+
 - [x] Review an existing PR in a public open-source repo (e.g., [React PRs](https://github.com/facebook/react/pulls)):
   - Read through comments and discussions.
   - Observe how changes are requested and approved.
@@ -61,12 +71,17 @@ Learn how to create, review, and collaborate on Pull Requests (PRs) in GitHub.
 
 - [x] Request feedback on your PR from a peer or mentor
 - [x] Merge the PR (if approved) and delete the branch.
+
 ___________________________________________________________
+
 ## Writing Meaningful Commit Messages
+
 ### Goal
+
 Learn how to write clear, meaningful commit messages that improve collaboration and code history readability.
 
 ## Tasks
+
 - [x] Research best practices for writing commit messages.
 Writing clear and meaningful commit messages is crucial for collaboration and maintaining a readable code history. Here are some best practices:
 
@@ -90,6 +105,7 @@ Source: [How to Write Better Git Commit Messages – A Step-By-Step Guide](https
     For the first commit, I used a vague message that lacked detail: `Updated file.txt`. This message didn't specify why I updated the following text file, making it unclear to anyone reading the history later.
   - An overly detailed commit message.
     In the second commit, I wrote an overly detailed message that, while informative, was more verbose than necessary:
+
     ```
     chore: Testing the pull request process for the first time to make sure everything is working correctly. This commit is just a test to check if the pull request system is functioning as expected. I created a new branch, made a small change, and am now committing this to verify that the PR workflow is smooth. Steps taken:
       - Created a new branch from `main`
@@ -98,13 +114,16 @@ Source: [How to Write Better Git Commit Messages – A Step-By-Step Guide](https
       - Pushing the branch to remote to open a PR
     If everything works well, this PR should be reviewed, approved, and merged without issues.
     ```
+
     Although the message contained a lot of information, it was too detailed for a simple configuration update. It made the history cluttered and harder to quickly scan through when looking for changes.
   - A well-structured commit message.
     For the third commit, I balance a writing clear and structured message:
+
     ```
     chore: Test pull request workflow
     Added a small change to verify the pull request process is working correctly.
     ```
+
     This message is concise, explains the problem, states the solution, and references a related issue. It gives anyone reading the history enough context without being too wordy.
 
 - [x] Write reflections in git_understanding.md:
@@ -117,18 +136,24 @@ Source: [How to Write Better Git Commit Messages – A Step-By-Step Guide](https
   - How can poor commit messages cause issues later?
     Poor commit messages, like “fixed stuff,” can lead to confusion, increased debugging time, and difficulties in identifying why certain changes were made. This lack of clarity may also negatively impact teamwork, as other developers might misinterpret the purpose or intent behind changes, potentially causing conflicts or redundant work.
 - [x] Commit and push your changes to GitHub.
+
 ___________________________________________________________
+
 ## Debugging with git bisect
+
 ### Goal
+
 Learn how to use git bisect to identify which commit introduced a bug in a project.
 
 ## Tasks
+
 - [x] Research git bisect and how it helps in debugging.
 `git bisect` is a binary search tool built into Git that helps find the specific commit where a bug was introduced. It automates the process of checking commits between a known good state and a known bad state.
 
 - [x] Create a test scenario:
   - Make a series of commits in your test repo.
   - Introduce a bug in one of the commits.
+
   ```bash
   mkdir bisect-test && cd bisect-test
   git init
@@ -151,7 +176,9 @@ Learn how to use git bisect to identify which commit introduced a bug in a proje
   echo "Feature C" >> app.txt
   git commit -am "Add Feature C"
   ```
+
   - Use git bisect to track down the commit that introduced the issue.
+
   ```bash
   git bisect start
   git bisect bad  # HEAD is bad (bug present)
@@ -189,13 +216,17 @@ Learn how to use git bisect to identify which commit introduced a bug in a proje
     - `git bisect` is fast and automated, often needing just a few checks to pinpoint the problem.
 
 - [x] Commit and push your changes to GitHub.
+
 ___________________________________________________________
 
 ## Advanced Git Commands & When to Use Them
+
 ### Goal
+
 Understand and experiment with advanced Git commands using your preferred Git desktop client.
 
 ## Tasks
+
 - [x] Research the following Git commands and test them in your repo:
   - git checkout main -- <file> – Restore a specific file from main without affecting other changes.
   Useful when a single file becomes corrupted or diverges undesirably from the main branch. Rather than resetting the entire branch, this command enables targeted recovery without affecting unrelated work.
@@ -226,12 +257,17 @@ Understand and experiment with advanced Git commands using your preferred Git de
   During testing, it became evident that granular commands like git blame offer significant insight into code authorship, which can be instrumental during debugging and code reviews. Additionally, the power of git cherry-pick to isolate a single commit surprised many by simplifying the process of backporting fixes, while git checkout for files proved to be a valuable tool for non-destructive recovery of individual files.
 
 - [x] Commit and push your changes to GitHub.
+
 ___________________________________________________________
+
 ## Merge Conflicts & Conflict Resolution
+
 ### Goal
+
 Understand what merge conflicts are, why they happen, and how to resolve them.
 
 ## Tasks
+
 - [x] Research what causes merge conflicts in Git.
 Merge conflicts happen when:
   - Two branches have changes in the same part of a file.
@@ -239,30 +275,40 @@ Merge conflicts happen when:
 
 - [x] Create a merge conflict in your test repo by:
   - Creating a branch and editing a file.
+
   ```bash
   git checkout -b feature-branch
   ```
+
   Edit a file (e.g., example.txt) and change one of lines to: `This is the feature branch edit.`
   Add, commit and push the change:
+
   ```bash
   git add example.txt
   git commit -m "Edit from feature branch"
   git push origin feature-branch
   ```
+
   - Switching back to main, making a conflicting edit in the same file, and committing it.
   Switch back to main:
+
   ```bash
   git checkout main
   ```
+
   Edit the same line in example.txt `This is the main branch edit.`, but change it differently, then commit that change:
+
   ```bash
   git add example.txt
   git commit -m "Edit from main branch"
   ```
+
   - Merging the branch back into main.
+
   ```bash
   git merge feature-branch
   ```
+
   Git will throw a conflict:
   `CONFLICT (content): Merge conflict in example.txt`
 
@@ -276,30 +322,43 @@ Merge conflicts happen when:
   I learned how Git handles conflicting changes and how to manually resolve them using a Git desktop client. Merge conflicts seem scary, but they’re just Git’s way of asking for help when it’s unsure what changes to keep.
 
 - [x] Commit and push your changes to GitHub.
+
 ___________________________________________________________
+
 ## Branching & Team Collaboration
+
 ### Goal
+
 Understand the importance of branching, avoiding direct pushes to main, and following a structured review process.
 
 ## Tasks
+
 - [x] Create a new branch in your Git desktop client (e.g., GitHub Desktop, VS Code, SourceTree).
+
 ```bash
 git checkout -b branch-test
 ```
+
 or if you have a'ready had a branch:
+
 ```bash
 git checkout branch-test
 ```
+
 - [x] Make a small change in your repo and commit it to the new branch.
 I edit a file like team.txt or README.md and add something simple like `This is a collaboration test on a new branch.`, then stage the commit:
+
 ```bash
 git add .
 git commit -m "Add test update for branching practice"
 ```
+
 - [x] Switch back to main and check that your changes are not there.
+
 ```bash
 git checkout main
 ```
+
 Check the file that is changed — the update should not be there. I use `git log --oneline`. I don’t see the commit message I added (like "Add test update for branching practice"), that confirms the commit isn’t in main. This shows how branches isolate changes.
 
 - [x] Reflect on why teams use branches instead of pushing directly to main in git_understanding.md:
@@ -307,18 +366,23 @@ Check the file that is changed — the update should not be there. I use `git lo
   Pushing directly to main can introduce errors into the production code without peer review. If everyone pushes to main, bugs and breaking changes might be introduced before they’re tested or reviewed, leading to instability.
 
   - How do branches help with reviewing code?
-  Branches allow developers to isolate work on specific features or fixes. When a branch is ready, a pull request can be created for others to review the code, suggest changes, or approve it. This makes collaboaration safer and more organized.
+  Branches allow developers to isolate work on specific features or fixes. When a branch is ready, a pull request can be created for others to review the code, suggest changes, or approve it. This makes collaboration safer and more organized.
 
   - What happens if two people edit the same file on different branches?
-  If two people edit the same file (especially the same lines), Git may not know how to automatically merge them. This results in a merge conflict, and someone will nedd to manually resolve it by choosing which version to keep.
+  If two people edit the same file (especially the same lines), Git may not know how to automatically merge them. This results in a merge conflict, and someone will need to manually resolve it by choosing which version to keep.
 
 - [x] Commit and push your changes to GitHub.
+
 ___________________________________________________________
+
 ## Git Concepts: Staging vs. Committing
+
 ### Goal
+
 Understand the difference between staging and committing in Git by experimenting in your own repository.
 
 ## Tasks
+
 - [x] Research the difference between staging and committing.
   - Staging (`git add`):
     Prepares specific changes (files or lines) to be committed. Think of it as a "shopping cart" of changes you're ready to save.
@@ -331,11 +395,14 @@ Understand the difference between staging and committing in Git by experimenting
   - A Git desktop client (e.g., GitHub Desktop, VS Code Git integration).
 - [x] Modify a file and try the following:
   - Stage it but don’t commit (git add <file> or equivalent in your client)
+
   ```bash
   git add stage-learn.txt
   ```
+
   - Check the status (git status).
   Output said:
+
   ```
   On branch main
 
@@ -345,12 +412,15 @@ Understand the difference between staging and committing in Git by experimenting
   (use "git rm --cached <file>..." to unstage)
         new file:   stage-learn.txt
   ```
+
   - Unstage the file (git reset HEAD <file> or equivalent).
   Output shown:
+
   ```
   Unstaged changes after reset:
   M       stage-learn.txt
   ```
+
   - Commit the file and observe the difference.
 
 - [x] Write a summary in git_understanding.md:

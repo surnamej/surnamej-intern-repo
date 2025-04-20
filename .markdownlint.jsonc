@@ -1,0 +1,23 @@
+{
+  "default": true,
+
+  // Allow long lines
+  "MD013": {
+    "line_length": 800,
+    "ignore_code_blocks": true,
+    "tables": false
+  },
+
+  // Disable MD029 (ordered list prefix)
+  "MD029": false,
+
+  // Disable MD024 (duplicate headings)
+  "MD024": false,
+
+  // Other rules you already disabled
+  "MD033": false,
+  "MD036": false,
+  "MD040": false,
+  "MD001": false,
+  "MD035": false
+}

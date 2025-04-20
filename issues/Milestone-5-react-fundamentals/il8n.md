@@ -1,13 +1,17 @@
 # Milestone: React Fundamentals
 
 ## Implementing Internationalization with i18next
+
 ### Goal
+
 Learn how to add multi-language support to a React application using i18next.
 
 ### Why is this important?
+
 Focus Bear supports multiple languages, allowing users worldwide to access the app in their native language. Internationalization (i18n) ensures a seamless experience for non-English speakers and makes the app more inclusive.
 
 ## Tasks
+
 - [x] Research how i18next works in React and why internationalization is important.
 i18next is a powerful internationalization framework for JavaScript applications, including React. It helps manage translations, handle pluralization, and format dates and numbers. In React, react-i18next is used to integrate i18next, providing hooks and components to easily translate content.
 

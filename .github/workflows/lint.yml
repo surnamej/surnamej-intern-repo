@@ -1,0 +1,21 @@
+name: Lint Markdown and Spellcheck
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install markdownlint and cspell
+        run: |
+          npm install -g markdownlint-cli cspell
+
+      - name: Run markdownlint
+        run: markdownlint "**/*.md"
+
+      - name: Run spell check
+        run: cspell --config cspell.json

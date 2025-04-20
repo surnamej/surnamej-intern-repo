@@ -1,25 +1,30 @@
 # Milestone: React Fundamentals
 
 ## Understanding React Hooks: useEffect
+
 ### Goal
+
 Learn how to use the useEffect hook to handle side effects in React components.
 
 ## Tasks
+
 - [x] Research how useEffect works and when to use it.
 The `useEffect` hook is a fundamental feature of React that allows developers to perform **side effects** in functional components. Side effects include operations such as data fetching, subscriptions, timers, manually changing the DOM, and logging — actions that can affect components outside the scope of the current render.
 
 `useEffect` is called after the component renders and ensures the DOM is updated before executing its logic. It accepts two arguments" **a callback function** (the effect) and an optional **dependency array**. The dependency array determines when the effect should re-run:
-  - If the array is empty `[]`, the effect runs only once after the initial render (similar to `componentDidMount`).
-  - If it includes specific variables, the effect runs only when those variables change.
-  - If omitted, the effect runs after every render, which can lead to performance issues or infinite loops if not handled correctly.
 
-Another important feature of `useEffect` is its **cleanup function**, which is returned from the callback. This cleanup runs before the component unmounts or before the effect re-runs. It's commonly used to clean up subsccriptions, event listeners, or timers.
+- If the array is empty `[]`, the effect runs only once after the initial render (similar to `componentDidMount`).
+- If it includes specific variables, the effect runs only when those variables change.
+- If omitted, the effect runs after every render, which can lead to performance issues or infinite loops if not handled correctly.
+
+Another important feature of `useEffect` is its **cleanup function**, which is returned from the callback. This cleanup runs before the component unmounts or before the effect re-runs. It's commonly used to clean up subscriptions, event listeners, or timers.
 
 Developers typically use `useEffect` for tasks such as:
-  - Fetching data from APIs
-  - Setting up or cleaning up event listeners
-  - Synchronising external systems (e.g., localStorage or web sockets)
-  - Running code in response to prop or state changes
+
+- Fetching data from APIs
+- Setting up or cleaning up event listeners
+- Synchronising external systems (e.g., localStorage or web sockets)
+- Running code in response to prop or state changes
 Source: [useEffect](https://react.dev/reference/react/useEffect)
 According to the official React documentation, "`useEffect` serves the same purpose as `componentDidMount`, `componentDidUpdate`, and `componentWillUnmount` in React classes, but unified into a single API".
 Source: [Legacy React APIs](https://react.dev/reference/react/legacy)
@@ -58,13 +63,17 @@ Source: [Legacy React APIs](https://react.dev/reference/react/legacy)
     For example, I used a `fetch` call inside `useEffect`, and if I hadn't properly managed dependencies or state, it might have fired repeatedly or failed to clean up. Also, using a button-triggered state change helped limit when the fetch ran — showing the importance of mixing `useEffect` with event handlers correctly.
 
     React’s Strict Mode also helped me realize that without clean cleanup logic, unmounting and remounting can lead to **duplicate effects**, reinforcing the need to use `return` statements in `useEffect` to cancel or clean up side effects.
+
 ______________________________________
 
 ## Optimizing Performance with useMemo
+
 ### Goal
+
 Understand how useMemo helps optimize expensive calculations in React.
 
 ## Tasks
+
 - [x] Research how useMemo works and why it’s useful.
   `useMemo` is a React Hook that allows developers to **memoize the result of an expensive computation**. It returns a cached version of the computed value and only recalculates it when one of the dependencies has changed.
 
@@ -100,13 +109,17 @@ Understand how useMemo helps optimize expensive calculations in React.
 
   - What happens if you remove useMemo from your implementation?
     If I remove useMemo from my implementation, the expensive calculation will run on every render, regardless of whether the inputs have changed. This can lead to performance issues, especially when dealing with large datasets or complex computations. Without useMemo, my application could become slower and less responsive.
+
 ________________________________________
 
 ## Preventing Unnecessary Renders with useCallback
+
 ### Goal
+
 Learn how useCallback helps optimize function references in React.
 
 ## Tasks
+
 - [x] Research how useCallback works and when to use it.
   React's `useCallback` hook is designed to optimize performance by memoizing functions, ensuring that the same function instance is used between renders unless its dependencies change. In a React component, functions are re-created on every render, which can lead to unnecessary re-renders of child components if these functions are passed as props. By wrapping a function in `useCallback`, React stores the function and only creates a new instance when one of its dependencies has changed. This is particularly useful when the function is passed to components wrapped with `React.memo` or used in dependency arrays for other hooks, such as `useEffect`.
 
@@ -135,5 +148,5 @@ Learn how useCallback helps optimize function references in React.
     - When the function is not passed as a prop to child components or used as a dependency in other hooks, the performance benefit is negligible.
     - In components that do not re-render frequently, memoizing functions may add unnecessary complexity.
     - Overusing `useCallback` can lead to more complex code without significant performance gains, so it should be used selectively in performance-critical scenarios.
-________________________________________
 
+________________________________________
