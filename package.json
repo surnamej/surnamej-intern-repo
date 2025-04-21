@@ -13,6 +13,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.26.10",
+    "@babel/preset-env": "^7.26.9",
+    "@babel/preset-react": "^7.26.3",
+    "babel-jest": "^29.7.0",
     "cspell": "^8.19.0",
     "husky": "^8.0.0",
     "markdownlint-cli2": "^0.17.2"
